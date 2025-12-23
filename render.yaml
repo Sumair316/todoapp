@@ -1,0 +1,12 @@
+# render.yaml
+services:
+  - type: web
+    name: todo-api
+    env: java
+    region: oregon
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/todo-api-*.jar
+    envVars:
+      - key: SERVER_PORT
+        value: 10000
+    healthCheckPath: /actuator/health
